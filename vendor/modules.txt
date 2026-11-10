@@ -1,32 +1,23 @@
 # github.com/davecgh/go-spew v1.1.1
 ## explicit
 github.com/davecgh/go-spew/spew
-# github.com/s-r-engineer/library v0.2.5
-## explicit; go 1.24.1
-github.com/s-r-engineer/library/errors
-github.com/s-r-engineer/library/http
-github.com/s-r-engineer/library/io
-github.com/s-r-engineer/library/logging
-github.com/s-r-engineer/library/nordvpn
-# go.uber.org/multierr v1.10.0
-## explicit; go 1.19
-go.uber.org/multierr
-# go.uber.org/zap v1.27.0
-## explicit; go 1.19
-go.uber.org/zap
-go.uber.org/zap/buffer
-go.uber.org/zap/internal
-go.uber.org/zap/internal/bufferpool
-go.uber.org/zap/internal/color
-go.uber.org/zap/internal/exit
-go.uber.org/zap/internal/pool
-go.uber.org/zap/internal/stacktrace
-go.uber.org/zap/zapcore
-# golang.org/x/sys v0.31.0
-## explicit; go 1.23.0
+# github.com/pperminov/library v0.2.17-0.20260108164605-671d9131e584
+## explicit; go 1.25.5
+github.com/pperminov/library/dereferer
+github.com/pperminov/library/errors
+github.com/pperminov/library/http
+github.com/pperminov/library/io
+github.com/pperminov/library/logging
+github.com/pperminov/library/nordvpn
+github.com/pperminov/library/sync
+# golang.org/x/sync v0.24.0
+## explicit; go 1.26.0
+golang.org/x/sync/semaphore
+# golang.org/x/sys v0.49.0
+## explicit; go 1.26.0
 golang.org/x/sys/plan9
 golang.org/x/sys/unix
 golang.org/x/sys/windows
-# golang.org/x/term v0.30.0
-## explicit; go 1.23.0
+# golang.org/x/term v0.47.0
+## explicit; go 1.26.0
 golang.org/x/term

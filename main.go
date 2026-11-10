@@ -1,13 +1,14 @@
 package main
 
 import (
+	"encoding/base64"
 	"flag"
 	"fmt"
 	"os"
 
-	libraryErrors "github.com/s-r-engineer/library/errors"
-	libraryIO "github.com/s-r-engineer/library/io"
-	libraryNordvpn "github.com/s-r-engineer/library/nordvpn"
+	libraryErrors "github.com/pperminov/library/errors"
+	libraryIO "github.com/pperminov/library/io"
+	libraryNordvpn "github.com/pperminov/library/nordvpn"
 )
 
 const template = `[Interface]
@@ -40,11 +41,23 @@ func main() {
 	if countryID == -1 {
 		panic("no such country " + country)
 	}
-	privateKey, _ := libraryNordvpn.FetchOwnPrivateKey(token)
-	_, _, publicKey, _, _ := libraryNordvpn.FetchServerData(countryID)
-	file, err := os.OpenFile(country+".conf", os.O_CREATE|os.O_WRONLY, 0600)
+	privateKey, err := libraryNordvpn.FetchOwnPrivateKey(token)
+	libraryErrors.Panicer(err)
+	libraryErrors.Panicer(validateKey("private", privateKey))
+	_, _, publicKey, _, err := libraryNordvpn.FetchServerData(countryID)
+	libraryErrors.Panicer(err)
+	libraryErrors.Panicer(validateKey("public", publicKey))
+	file, err := os.OpenFile(country+".conf", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
 	libraryErrors.Panicer(err)
 	defer file.Close()
 	_, err = file.Write([]byte(fmt.Sprintf(template, privateKey, publicKey, country, host)))
 	libraryErrors.Panicer(err)
+}
+
+func validateKey(kind, key string) error {
+	decoded, err := base64.StdEncoding.DecodeString(key)
+	if err != nil || len(decoded) != 32 {
+		return fmt.Errorf("invalid %s key: expected a base64-encoded 32-byte WireGuard key", kind)
+	}
+	return nil
 }

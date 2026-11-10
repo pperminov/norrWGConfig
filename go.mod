@@ -1,13 +1,12 @@
-module github.com/s-r-engineer/norrWGConfig
+module github.com/pperminov/norrWGConfig
 
-go 1.24.1
+go 1.26.0
 
-require github.com/s-r-engineer/library v0.2.5
+require github.com/pperminov/library v0.2.17-0.20260108164605-671d9131e584
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
-	go.uber.org/multierr v1.10.0 // indirect
-	go.uber.org/zap v1.27.0 // indirect
-	golang.org/x/sys v0.31.0 // indirect
-	golang.org/x/term v0.30.0 // indirect
+	golang.org/x/sync v0.24.0 // indirect
+	golang.org/x/sys v0.49.0 // indirect
+	golang.org/x/term v0.47.0 // indirect
 )
